@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: Boss.1212
+      POSTGRES_USER: postgres
+      POSTGRES_DB: facesocial
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+  
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+  
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - DATABASE_URL=postgresql://postgres:Boss.1212@postgres:5432/facesocial
+      - REDIS_URL=redis://redis:6379
+      - JWT_SECRET=2afc847e65fb11d6bbe5bdd3a8f5242490565e43cf459f6e4f14614e7d2a0e17
+    depends_on:
+      - postgres
+      - redis
+  
+  # ระบบ AI จะถูกตั้งค่าในภายหลัง เนื่องจากต้องการใช้ GPU ของเครื่อง
+  # จึงไม่รวมในไฟล์ docker-compose นี้
+
+volumes:
+  postgres-data:
+  redis-data:

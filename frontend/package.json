@@ -1,0 +1,37 @@
+{
+    "name": "facesocial-frontend",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+    },
+    "dependencies": {
+      "@tanstack/react-query": "^5.0.0",
+      "axios": "^1.5.1",
+      "face-api.js": "^0.22.2",
+      "framer-motion": "^10.16.4",
+      "next": "14.0.0",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "react-hook-form": "^7.47.0",
+      "react-hot-toast": "^2.4.1",
+      "react-icons": "^4.11.0",
+      "socket.io-client": "^4.7.2",
+      "zod": "^3.22.4",
+      "zustand": "^4.4.3"
+    },
+    "devDependencies": {
+      "@types/node": "^20.8.7",
+      "@types/react": "^18.2.29",
+      "@types/react-dom": "^18.2.13",
+      "autoprefixer": "^10.4.16",
+      "eslint": "^8.51.0",
+      "eslint-config-next": "14.0.0",
+      "postcss": "^8.4.31",
+      "tailwindcss": "^3.3.3",
+      "typescript": "^5.2.2"
+    }
+  }
